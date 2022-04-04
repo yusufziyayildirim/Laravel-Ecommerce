@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Str;
 
 class Controller extends BaseController
 {
@@ -26,11 +27,11 @@ class Controller extends BaseController
             if ($request->has($fillable)) {
                 $data[$fillable] = $request->get($fillable);
             } 
-            // else {
-            //     if (Str::of($fillable)->startsWith("is_")) {
-            //         $data[$fillable] = 0;
-            //     }
-            // }
+            else {
+                if (Str::of($fillable)->startsWith("is_")) {
+                    $data[$fillable] = 0;
+                }
+            }
         }
 
         // if (count($request->allFiles()) > 0) {

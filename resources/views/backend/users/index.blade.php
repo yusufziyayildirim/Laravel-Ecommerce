@@ -57,7 +57,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black"
-                                  href="">
+                                  href="{{route('addresses.index',['user'=> $item->user_id])}}">
                                     <span data-feather="map-pin"></span>
                                     Adres
                                 </a>
