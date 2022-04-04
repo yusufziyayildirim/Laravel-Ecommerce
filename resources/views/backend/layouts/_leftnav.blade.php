@@ -11,4 +11,10 @@
       Kullanıcılar
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{route('categories.index')}}">
+      <span data-feather="file"></span>
+      Kategoriler
+    </a>
+  </li>
 </ul>

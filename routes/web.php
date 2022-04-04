@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AddressController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,10 @@ Route::get('/', function () {
 Route::resource('/users', UserController::class);
 Route::get('/users/{user}/change-password', [UserController::class, 'passwordForm'])->name('user.changePassword');
 Route::post('/users/{user}/change-password', [UserController::class, 'changePassword']);
-
 Route::resource('/users/{user}/addresses', AddressController::class);
+
+Route::resource('/categories', CategoryController::class);
+
 
 
 
