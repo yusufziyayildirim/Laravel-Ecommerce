@@ -121,16 +121,16 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-black"
-                                       href="">
+                                       href="{{route('user.changePassword',['user' => $item->user_id])}}">
                                         <span data-feather="lock"></span>
-                                        Şifre Değiştir
+                                        Şifre
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-black"
                                        href="">
                                         <span data-feather="map-pin"></span>
-                                        Adreslerim
+                                        Adres
                                     </a>
                                 </li>
                             </ul>

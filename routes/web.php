@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/users', UserController::class);
-Route::post('/delete', [UserController::class, 'de'])->name('delete');
+Route::get('/users/{user}/change-password', [UserController::class, 'passwordForm'])->name('user.changePassword');
+Route::post('/users/{user}/change-password', [UserController::class, 'changePassword']);
 
 
