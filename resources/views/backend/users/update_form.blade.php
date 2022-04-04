@@ -71,7 +71,7 @@
         <h1 class="h2">Kullanıcılar</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a href="{{route('users.create')}}" class="btn btn-sm btn-outline-success">Yeni ekle</a>
+                <a href="{{url()->previous()}}" class="btn btn-sm btn-outline-danger">Geri Dön</a>
             </div>
         </div>
 
@@ -82,14 +82,21 @@
         <form action="{{route('users.update',['user' => $user->user_id])}}" method="POST">
             @csrf
             @method('PUT')
+            <input type="hidden" name="user_id" value="{{$user->user_id}}">
             <div class="row">
                 <div class="col-lg-6">
                   <label for="name" class="form-label">Ad Soyad</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Ad soyad giriniz" value="{{$user->name}}">              
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Ad soyad giriniz" value="{{old("name",$user->name)}}">              
+                  @error('name')
+                      <span class="text-danger">{{$message}}</span>
+                  @enderror 
                 </div>
                 <div class="col-lg-6">
                   <label for="email" class="form-label">E-posta</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="E-posta giriniz" value="{{$user->email}}">              
+                  <input type="email" class="form-control" id="email" name="email" placeholder="E-posta giriniz" value="{{old("email",$user->email)}}">              
+                  @error('email')
+                      <span class="text-danger">{{$message}}</span>
+                  @enderror 
                 </div>
             </div>
             <div class="row mt-2">

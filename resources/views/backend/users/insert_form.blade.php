@@ -71,7 +71,7 @@
         <h1 class="h2">Kullanıcılar</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <a href="{{route('users.create')}}" class="btn btn-sm btn-outline-success">Yeni ekle</a>
+                <a href="{{url()->previous()}}" class="btn btn-sm btn-outline-danger">Geri Dön</a>
             </div>
         </div>
 
@@ -84,21 +84,33 @@
             <div class="row">
                 <div class="col-lg-6">
                   <label for="name" class="form-label">Ad Soyad</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Ad soyad giriniz">              
+                  <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" placeholder="Ad soyad giriniz">     
+                  @error('name')
+                      <span class="text-danger">{{$message}}</span>
+                  @enderror         
                 </div>
                 <div class="col-lg-6">
                   <label for="email" class="form-label">E-posta</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="E-posta giriniz">              
+                  <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}" placeholder="E-posta giriniz">              
+                  @error('email')
+                      <span class="text-danger">{{$message}}</span>
+                  @enderror    
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
                   <label for="password" class="form-label">Şifre</label>
                   <input type="password" class="form-control" id="password" name="password" placeholder="Şifre giriniz">              
+                  @error('password')
+                      <span class="text-danger">{{$message}}</span>
+                  @enderror    
                 </div>
                 <div class="col-lg-6">
                   <label for="password_confirmation" class="form-label">Şifre Tekar</label>
                   <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Şifreyi tekrar giriniz">              
+                  @error('password')
+                    <span class="text-danger">{{$message}}</span>
+                  @enderror
                 </div>
             </div>
             <div class="row mt-2">
