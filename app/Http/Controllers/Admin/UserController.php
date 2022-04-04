@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Redirect;
 use App\Http\Requests\UserRequest;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -40,38 +39,12 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $name=$request->name;
-        $email=$request->email;
-        $password=$request->password;
-        $is_admin=$request->is_admin;
-        $is_active=$request->is_active;
-
-        $is_active = $is_active == "on" ? 1 : 0;
-        $is_admin = $is_admin == "on" ? 1 : 0;
-
         $user = new User();
-        $user->name = $name;
-        $user->email = $email;
-        $user->password = Hash::make($password);
-        $user->is_admin = $is_admin;
-        $user->is_active = $is_active;
-
+        $data = $this->prepare($request,$user->getFillable());
+        $user->fill($data);
         $user->save();
 
         return Redirect::to(route('users.index'));
-
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -80,11 +53,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
         return view('backend.users.update_form', ['user' => $user]);
-
     }
 
     /**
@@ -94,27 +65,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(UserRequest $request, User $user)
     {
-        
-        $name=$request->name;
-        $email=$request->email;
-        $is_admin=$request->is_admin;
-        $is_active=$request->is_active;
-
-        $is_active = $is_active == "on" ? 1 : 0;
-        $is_admin = $is_admin == "on" ? 1 : 0;
-
-        $user = User::find($id);
-        $user->name = $name;
-        $user->email = $email;
-        $user->is_admin = $is_admin;
-        $user->is_active = $is_active;
-
+        $data = $this->prepare($request,$user->getFillable());
+        $user->fill($data);
         $user->save();
 
         return Redirect::to(route('users.index'));
-
     }
 
     /**
@@ -123,11 +80,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
         $user->delete();
-        return response()->json(["message"=>"done", "id"=>$id]);
+        return response()->json(["message"=>"done", "id"=>$user->user_id]);
     }
 
 
@@ -146,8 +102,8 @@ class UserController extends Controller
 
     public function changePassword(User $user, UserRequest $request)
     {
-        $password=$request->password;
-        $user->password = Hash::make($password);
+        $data = $this->prepare($request,$user->getFillable());
+        $user->fill($data);
         $user->save();
         
         return Redirect::to(route('users.index'));

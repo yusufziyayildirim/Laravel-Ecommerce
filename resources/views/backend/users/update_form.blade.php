@@ -30,7 +30,7 @@
     <div class="row mt-2">
         <div class="col-6">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="is_admin" name="is_admin" {{$user->is_admin == 1 ? 'checked' :''}}>
+                <input class="form-check-input" type="checkbox" id="is_admin" value="1" name="is_admin" {{$user->is_admin == 1 ? 'checked' :''}}>
                 <label class="form-check-label" for="is_admin">    
                     Yetkili Kullanıcı
                 </label>          
@@ -38,7 +38,7 @@
         </div>
         <div class="col-6">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="is_active" name="is_active" {{$user->is_active == 1 ? 'checked' :''}}>
+                <input class="form-check-input" type="checkbox" id="is_active" value="1" name="is_active" {{$user->is_active == 1 ? 'checked' :''}}>
                 <label class="form-check-label" for="is_active">    
                     Aktif
                 </label>          

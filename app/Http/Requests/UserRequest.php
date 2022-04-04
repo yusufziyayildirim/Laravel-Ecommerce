@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserRequest extends FormRequest
 {
@@ -45,12 +46,12 @@ class UserRequest extends FormRequest
         ];
     }
 
-    // protected function passedValidation()
-    // {
-    //     if ($this->request->has("password")) {
-    //         $password = $this->request->get("password");
-    //         $this->request->set("password", Hash::make($password));
-    //     }
-    // }
+    protected function passedValidation()
+    {
+        if ($this->request->has("password")) {
+            $password = $this->request->get("password");
+            $this->request->set("password", Hash::make($password));
+        }
+    }
 
 }
