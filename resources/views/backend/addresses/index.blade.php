@@ -1,7 +1,7 @@
 @extends('backend.layouts.backend_theme')
 
-@section('title','Kullanıcı Modülü')
-@section('subtitle','Kullanıcılar')
+@section('title','Kullanıcı Adres Modülü')
+@section('subtitle','Adresler')
 @section('btn_url',route("addresses.create",['user' => $user]))
 @section('btn_label','Yeni Ekle')
 @section('btn_css','success')

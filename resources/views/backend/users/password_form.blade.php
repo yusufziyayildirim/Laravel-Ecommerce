@@ -11,20 +11,17 @@
     @csrf
     <input type="hidden" name="user_id" value="{{$user->user_id}}">
     <div class="row">
-        <div class="col-lg-6">
-          <label for="password" class="form-label">Şifre</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Şifre giriniz">              
-          @error('password')
-              <span class="text-danger">{{$message}}</span>
-          @enderror    
-        </div>
-        <div class="col-lg-6">
-          <label for="password_confirmation" class="form-label">Şifre Tekar</label>
-          <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Şifreyi tekrar giriniz">              
-          @error('password')
-            <span class="text-danger">{{$message}}</span>
-          @enderror
-        </div>
+      <div class="col-lg-6">
+          <div class="mt-2">
+              <x-input label="Şifre Giriniz" placeholder="Şifre giriniz" field="password" type="password"/>
+          </div>
+      </div>
+      <div class="col-lg-6">
+          <div class="mt-2">
+              <x-input label="Şifre Tekrarı" placeholder="Şifrenizi tekrar giriniz" field="password_confirmation"
+                       type="password"/>
+          </div>
+      </div>
     </div>
     <div class="row">
         <div class="col-12">
