@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::resource('/users/{user}/addresses', AddressController::class);
 Route::resource('/categories', CategoryController::class);
 
 Route::resource('/products', ProductController::class);
+Route::resource('/products/{product}/images', ProductImageController::class);
 
 
 

@@ -17,4 +17,10 @@
       Kategoriler
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{route('products.index')}}">
+      <span data-feather="file"></span>
+      Ürünler
+    </a>
+  </li>
 </ul>
