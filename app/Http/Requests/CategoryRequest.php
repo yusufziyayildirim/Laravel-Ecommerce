@@ -25,10 +25,10 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        //$user_id = $this->request->get("user_id");
+        $category_id = $this->request->get("category_id");
         return [
             "name" => "required",
-            "slug" => "required|sometimes|unique:App\Models\Category,slug",
+            "slug" => "required|sometimes|unique:App\Models\Category,slug,$category_id",
         ];
     }
 
@@ -41,12 +41,13 @@ class CategoryRequest extends FormRequest
         ];
     }
 
-    // protected function passedValidation()
-    // {
-    //     if (!$this->request->has("slug")) {
-    //         $name = $this->request->get("name");
-    //         $slug = Str::of($name)->slug();
-    //         $this->request->set("slug", $slug);
-    //     }
-    // }
+    protected function passedValidation()
+    {
+        if (!$this->request->has("slug")) {
+            $name = $this->request->get("name");
+            $slug = Str::of($name)->slug();
+            dd($slug);
+            $this->request->set("slug", $slug);
+        }
+    }
 }

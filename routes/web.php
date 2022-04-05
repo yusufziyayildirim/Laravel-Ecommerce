@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ Route::post('/users/{user}/change-password', [UserController::class, 'changePass
 Route::resource('/users/{user}/addresses', AddressController::class);
 
 Route::resource('/categories', CategoryController::class);
+
+Route::resource('/products', ProductController::class);
+
 
 
 
