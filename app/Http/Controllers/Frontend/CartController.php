@@ -34,7 +34,8 @@ class CartController extends Controller
             ['user_id' => $user->user_id, 'is_active' => true],
             ['code' => Str::random(8)]
         );
-        return $cart;
+        return $cart; 
+        
     }
 
     /**
