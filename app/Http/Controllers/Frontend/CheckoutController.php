@@ -168,9 +168,10 @@ class CheckoutController extends Controller
     private function createInvoiceWithDetails(Order $order)
     {
         $invoice = new Invoice([
-            "cart_id" => $order->order_id,
+            "invoice_id" => $order->order_id,
             "code" => $order->code
         ]);
+        // $invoice->save();
 
         //Fatura Detaylarını Ekle
         foreach ($order->details as $detail) {
