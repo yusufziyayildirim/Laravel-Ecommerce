@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductImageRequest extends FormRequest
+class SignInRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,17 @@ class ProductImageRequest extends FormRequest
     public function rules()
     {
         return [
-            "product_id" => "required|numeric",
-            "image_url" => "required|image|mimes:jpg,jpeg,png,jfif,webp|sometimes",
+            "email" => "required|email",
+            "password" => "required"
         ];
     }
 
     public function messages()
     {
         return [
-            "product_id.required" => "Bu alan zorunludur.",
-            "product_id.numeric" => "Bu alan sayısal olmak zorundadır.",
-            "image_url.required" => "Bu alan zorunludur.",
-            "image_url.mimes" => "Sadece .jpg, .jpeg, .png, .jfif uzantılı dosyalar yüklenebilir.",
+            "email.required" => "Bu alan zorunludur.",
+            "email.email" => "Lütfen eposta kurallarına uygun giriş yapınız.",
+            "password.required" => "Bu alan zorunludur.",
         ];
     }
 }
